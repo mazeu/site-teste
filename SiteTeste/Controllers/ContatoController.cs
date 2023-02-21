@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 using SiteTeste.Models;
 using SiteTeste.Repository;
 
@@ -15,7 +16,9 @@ namespace SiteTeste.Controllers
         }
         public IActionResult Index()
         {
-            return View();
+            List<ContatoModel> ListaContatos= _contatoRepository.BuscarTodos();
+
+            return View(ListaContatos);
         }
 
         public IActionResult CriarContato()

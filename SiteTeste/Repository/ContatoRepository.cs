@@ -1,4 +1,6 @@
-﻿using SiteTeste.Data;
+﻿using System.Collections.Generic;
+using System.Linq;
+using SiteTeste.Data;
 using SiteTeste.Models;
 
 namespace SiteTeste.Repository
@@ -10,6 +12,12 @@ namespace SiteTeste.Repository
         {
             _bancoContext = bancoContext;
         }
+
+        public List<ContatoModel> BuscarTodos()
+        {
+            return _bancoContext.Contatos.ToList();
+        }
+
         public ContatoModel Adicionar(ContatoModel contato)
         {
             //gravar no banco
@@ -17,5 +25,7 @@ namespace SiteTeste.Repository
             _bancoContext.SaveChanges();//represents commit 
             return contato;
         }
+
+        
     }
 }

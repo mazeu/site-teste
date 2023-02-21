@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ContatoModel>
+@{
 	ViewData["Title"] = "Listagem de Contatos";
 }
 <div class="my-4">
@@ -18,43 +19,26 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto@gmail.com</td>
-      <td>(12) 99755-2244</td>
-            <td>
-                <div class="btn-group">
-                    <a role="button" class="btn btn-primary active"
-                    asp-controller="Contato" asp-action="EditarContato">Editar</a>
-                    <a role="button" class="btn btn-danger"
+   @if(Model != null && Model.Any()){
+       foreach (ContatoModel contato in Model)
+       {
+                <tr>
+                    <th scope="row">@contato.Id</th>
+                    <td>@contato.Nome</td>
+                    <td>@contato.Email</td>
+                    <td>@contato.Celular</td>
+                    <td>
+                        <div class="btn-group">
+                            <a role="button" class="btn btn-primary active" asp-route-id="@contato.Id"
+                       asp-controller="Contato" asp-action="EditarContato">Editar</a>
+                            <a role="button" class="btn btn-danger" asp-route-id="@contato.Id"
                        asp-controller="Contato" asp-action="ApagarContato">Apagar</a>
-                </div>
-            </td>
-    </tr>
-    <tr>
-      <th >2</th>
-      <td>Jacob</td>
-      <td>thornton@gmail.com</td>
-            <td>(12) 99755-2244</td>
-            <td>
-                <div class="btn-group">
-                    <a role="button" href="#" class="btn btn-primary active" aria-current="page">Editar</a>
-                    <a role="button" href="#" class="btn btn-danger">Apagar</a>
-                </div>
-            </td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td >Larry the Bird</td>
-      <td>twitter@gmail.com</td>
-            <td>(12) 99755-2244</td>
-            <td>
-                <div class="btn-group">
-                    <a role="button" href="#" class="btn btn-primary active" aria-current="page">Editar</a>
-                    <a role="button" href="#" class="btn btn-danger">Apagar</a>
-                </div>
-            </td>
-    </tr>
+                        </div>
+                    </td>
+                </tr>
+            }
+   }
+    
+    
   </tbody>
 </table>
