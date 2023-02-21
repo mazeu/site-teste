@@ -354,3 +354,7 @@ D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\refint\S
 D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\SiteTeste.pdb
 D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\SiteTeste.genruntimeconfig.cache
 D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\ref\SiteTeste.dll
+D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\Razor\Views\Contato\Index.cshtml.g.cs
+D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\Razor\Views\Contato\ApagarContato.cshtml.g.cs
+D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\Razor\Views\Contato\CriarContato.cshtml.g.cs
+D:\projetos-programas\c-sharp\asp5\SiteTeste\SiteTeste\obj\Debug\net5.0\Razor\Views\Contato\EditarContato.cshtml.g.cs
