@@ -1,9 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using SiteTeste.Models;
+using SiteTeste.Repository;
 
 namespace SiteTeste.Controllers
 {
     public class ContatoController : Controller
     {
+
+        public readonly IContatoRepository _contatoRepository;
+
+        public ContatoController(IContatoRepository contatoRepository)
+        {
+            _contatoRepository = contatoRepository;
+        }
         public IActionResult Index()
         {
             return View();
@@ -23,6 +32,14 @@ namespace SiteTeste.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult CriarContato(ContatoModel contato)
+        {
+            _contatoRepository.Adicionar(contato);
+
+            return RedirectToAction("Index");
+        }
+
 
     }
 }

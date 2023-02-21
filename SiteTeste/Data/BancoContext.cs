@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SiteTeste.Models;
 
 namespace SiteTeste.Data
 {
@@ -8,5 +9,7 @@ namespace SiteTeste.Data
         {
 
         }
+
+        public DbSet<ContatoModel> Contatos { get; set; }
     }
 }
