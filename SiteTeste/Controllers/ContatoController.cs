@@ -45,24 +45,69 @@ namespace SiteTeste.Controllers
         }
         public IActionResult ApagarContatoBanco(int Id)
         {
-            _contatoRepository.Apagar(Id);
-            return RedirectToAction("Index");
+            try
+            {
+               bool apagado = _contatoRepository.Apagar(Id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Contato apagado com sucesso!";
+                }
+                else
+                {
+                    TempData["MensagemSucesso"] = "Não foi possivel apagar o contato!";
+                }
+                return RedirectToAction("Index");
+            }
+            catch (System.Exception e)
+            {
+                TempData["MensagemErro"] = "Contato não foi apagado! Verifique as informações, detalhe:" + e.Message;
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
-            _contatoRepository.Adicionar(contato);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.Adicionar(contato);
+                    TempData["MensagemSucesso"] = "Contato criado com sucesso!";
+                    return RedirectToAction("Index");
+                }
 
-            return RedirectToAction("Index");
+                return View(contato);
+            }
+            catch (System.Exception e)
+            {
+                TempData["MensagemErro"] = "Contato não criado! Verifique as informações, detalhe:" + e.Message;
+                return RedirectToAction("Index");
+            }
+           
         }
 
         [HttpPost]
         public IActionResult AtualizaPorId(ContatoModel contato)
         {
-            _contatoRepository.AtualizarContato(contato);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    _contatoRepository.AtualizarContato(contato);
+                    TempData["MensagemSucesso"] = "Contato editado com sucesso!";
+                    return RedirectToAction("Index");
+                }
 
-            return RedirectToAction("Index");
+                return RedirectToAction("EditarContato", contato);
+            }
+            catch (System.Exception e)
+            {
+                TempData["MensagemErro"] = "Contato não editado! Verifique as informações, detalhe:" + e.Message;
+                return RedirectToAction("Index");
+            }
+
         }
     }
 }
