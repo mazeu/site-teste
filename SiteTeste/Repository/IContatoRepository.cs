@@ -10,5 +10,6 @@ namespace SiteTeste.Repository
         ContatoModel Adicionar(ContatoModel contato);
         ContatoModel AtualizarContato(ContatoModel contato);
         //ContatoModel AtualizaPorId(ContatoModel contato);
+        bool Apagar(int Id);
     }
 }

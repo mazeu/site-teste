@@ -68,5 +68,20 @@ namespace SiteTeste.Repository
 
             return contatoDb;
         }
+
+        public bool Apagar(int Id)
+        {
+            ContatoModel contatoDb = ListaPorId(Id);
+            if (contatoDb == null)
+            {
+                throw new System.Exception("Erro ao deletar o contato.");
+            }
+
+            _bancoContext.Remove(contatoDb);
+            _bancoContext.SaveChanges();
+
+            return true;
+
+        }
     }
 }

@@ -37,10 +37,18 @@ namespace SiteTeste.Controllers
             return View(contato);
         }
 
-        public IActionResult ApagarContato()
+        public IActionResult ApagarContato(int Id)
         {
-            return View();
+            //Traz a informação do contato que se quer apagar, mas nao apaga no banco
+            ContatoModel contato = _contatoRepository.ListaPorId(Id);
+            return View(contato);
         }
+        public IActionResult ApagarContatoBanco(int Id)
+        {
+            _contatoRepository.Apagar(Id);
+            return RedirectToAction("Index");
+        }
+
         [HttpPost]
         public IActionResult CriarContato(ContatoModel contato)
         {
