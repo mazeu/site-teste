@@ -5,7 +5,10 @@ namespace SiteTeste.Repository
 {
     public interface IContatoRepository
     {
+        ContatoModel ListaPorId(int Id);
         List<ContatoModel> BuscarTodos();
         ContatoModel Adicionar(ContatoModel contato);
+        ContatoModel AtualizarContato(ContatoModel contato);
+        //ContatoModel AtualizaPorId(ContatoModel contato);
     }
 }

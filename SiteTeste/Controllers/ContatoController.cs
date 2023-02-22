@@ -26,9 +26,15 @@ namespace SiteTeste.Controllers
             return View();
         }
 
-        public IActionResult EditarContato()
+        /// <summary>
+        /// Traz os dados do contato pelo Id para preencher o formulario de edição
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        public IActionResult EditarContato(int Id)
         {
-            return View();
+            ContatoModel contato = _contatoRepository.ListaPorId(Id);
+            return View(contato);
         }
 
         public IActionResult ApagarContato()
@@ -43,6 +49,12 @@ namespace SiteTeste.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public IActionResult AtualizaPorId(ContatoModel contato)
+        {
+            _contatoRepository.AtualizarContato(contato);
 
+            return RedirectToAction("Index");
+        }
     }
 }
